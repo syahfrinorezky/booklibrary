@@ -22,17 +22,17 @@ public class MemberController {
     @Autowired
     private MemberRepo memberRepo;
 
-    @GetMapping("members")
+    @GetMapping("/members")
     public ResponseEntity<ApiResponse> getAllMembers() {
-        List<Members> members = memberRepo.findAll();
+        List<Members> members = memberRepo.findAllByDeletedAtIsNull();
 
         return ResponseEntity.ok(
                 new ApiResponse("success", "Members retrieved successfully", members));
     }
 
-    @GetMapping("members/{id}")
+    @GetMapping("/members/{id}")
     public ResponseEntity<ApiResponse> getMemberById(@PathVariable Long id) {
-        Members member = memberRepo.findById(id).orElse(null);
+        Members member = memberRepo.findByIdAndDeletedAtIsNull(id).orElse(null);
 
         if (member == null) {
             return ResponseEntity.status(404).body(
@@ -43,7 +43,7 @@ public class MemberController {
                 new ApiResponse("success", "Member retrieved successfully", member));
     }
 
-    @PostMapping("members")
+    @PostMapping("/members")
     public ResponseEntity<ApiResponse> addMember(@RequestBody Members member) {
         Members newMember = memberRepo.save(member);
 
@@ -51,9 +51,9 @@ public class MemberController {
                 new ApiResponse("success", "Member added successfully", newMember));
     }
 
-    @PutMapping("members/{id}")
+    @PutMapping("/members/{id}")
     public ResponseEntity<ApiResponse> updateMember(@PathVariable Long id, @RequestBody Members newData) {
-        Members existingMember = memberRepo.findById(id).orElse(null);
+        Members existingMember = memberRepo.findByIdAndDeletedAtIsNull(id).orElse(null);
 
         if (existingMember == null) {
             return ResponseEntity.status(404).body(
@@ -71,9 +71,9 @@ public class MemberController {
                         "success", "Member updated successfully", updatedMember));
     }
 
-    @DeleteMapping("members/{id}")
+    @DeleteMapping("/members/{id}")
     public ResponseEntity<ApiResponse> deleteMember(@PathVariable Long id) {
-        Members existingMember = memberRepo.findById(id).orElse(null);
+        Members existingMember = memberRepo.findByIdAndDeletedAtIsNull(id).orElse(null);
 
         if (existingMember == null) {
             return ResponseEntity.status(404).body(

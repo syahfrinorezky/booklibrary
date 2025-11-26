@@ -33,14 +33,14 @@ public class Members {
 
     @CreatedDate
     @Column
-    private LocalDateTime created_at;
+    private LocalDateTime createdAt;
 
     @LastModifiedDate
     @Column
-    private LocalDateTime updated_at;
+    private LocalDateTime updatedAt;
 
     @Column
-    private LocalDateTime deleted_at;
+    private LocalDateTime deletedAt;
 
 
     public Long getId() {
@@ -76,26 +76,26 @@ public class Members {
     }
 
     public LocalDateTime getCreatedAt() {
-        return created_at;
+        return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
     public LocalDateTime getUpdatedAt() {
-        return updated_at;
+        return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDateTime updated_at) {
-        this.updated_at = updated_at;
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public LocalDateTime getDeletedAt() {
-        return deleted_at;
+        return deletedAt;
     }
 
-    public void setDeletedAt(LocalDateTime deleted_at) {
-        this.deleted_at = deleted_at;
+    public void setDeletedAt(LocalDateTime deletedAt) {
+        this.deletedAt = deletedAt;
     }
 }
