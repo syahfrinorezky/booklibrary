@@ -135,6 +135,7 @@ public class BookController {
         existingBook.setCategory(newData.getCategory());
         existingBook.setPublisher(newData.getPublisher());
         existingBook.setYear(newData.getYear());
+        existingBook.setStock(newData.getStock());
 
         Books updatedBook = booksRepo.save(existingBook);
 
