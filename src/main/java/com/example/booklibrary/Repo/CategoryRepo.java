@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.booklibrary.Model.Categories;
 
-public interface CategoriesRepo extends JpaRepository<Categories, Long> {
+public interface CategoryRepo extends JpaRepository<Categories, Long> {
     List<Categories> findAllByDeletedAtIsNull();
     Optional<Categories> findByIdAndDeletedAtIsNull(Long id);
 }
